@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html data-theme="light">
+  <head>
+    <title>DOTStore | Our Products</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="NOVER MOHSEN" />
+    <link rel="shortcut icon" href="assets/nover.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style/all.min.css" />
+    <link rel="stylesheet" href="style/main.css" />
+    <link rel="stylesheet" href="style/products.css" />
+  </head>
+  <body>
+    <header>
+      <div class="left-side">
+        <h2><span>dot</span>Store</h2>
+        <a class="bar" id="bar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
+      </div>
+      <div class="overlay" id="overlay"></div>
+      <div class="right-side" id="right-side">
+        <ul>
+          <li>
+            <a href="index.html"><i class="fa-solid fa-arrow-left"></i>home</a>
+          </li>
+          <li>
+            <button class="toggle-btn" id="toggle-btn">
+              <div class="toggle-content">
+                <span class="light"><i class="fa-solid fa-sun"></i></span>
+                <span class="dark"><i class="fa-solid fa-moon"></i></span>
+              </div>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <aside id="aside-bar">
+        <h3 class="title-side">search filters :</h3>
+        <div class="range-side">
+          <label for="min-price">min :</label>
+          <input type="text" placeholder="minimum price" id="min-price" />
+          <label for="max-price">max :</label>
+          <input type="text" placeholder="maximum price" id="max-price" />
+        </div>
+        <div class="btns-side" id="btns-side">
+          <ul>
+            <li data-filter="all">all</li>
+            <h4>electronics :</h4>
+            <li data-filter="smartphones">smartphones</li>
+            <li data-filter="laptops">laptops</li>
+            <li data-filter="electronics">Others</li>
+            <h4>life style :</h4>
+            <li data-filter="men's clothing">men's clothing</li>
+            <li data-filter="women's clothing">women's clothing</li>
+            <li data-filter="jewelery">jewelery</li>
+            <li data-filter="fragrances">fragrances</li>
+            <li data-filter="skincare">skincare</li>
+            <h4>home :</h4>
+            <li data-filter="groceries">groceries</li>
+            <li data-filter="home-decoration">home decoration</li>
+          </ul>
+        </div>
+      </aside>
+      <div class="container-side">
+        <div class="seacrh-box">
+          <button class="bar-btn" id="bar-btn">
+            <i class="fa-solid fa-chart-bar"></i>
+          </button>
+          <div class="search-content">
+            <input type="search" placeholder="Search Here" id="search-input" />
+            <label for="search-input">
+              <i class="fa-solid fa-magnifying-glass"></i
+            ></label>
+          </div>
+        </div>
+        <div class="product-container" id="products-container"></div>
+      </div>
+    </main>
+    <script src="javascript-file/header.js"></script>
+    <script src="javascript-file/products.js"></script>
+  </body>
+</html>
