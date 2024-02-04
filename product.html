@@ -9,8 +9,10 @@
     <link rel="stylesheet" href="style/all.min.css" />
     <link rel="stylesheet" href="style/main.css" />
     <link rel="stylesheet" href="style/products.css" />
+    <link rel="stylesheet" href="style/preview.css" />
   </head>
   <body>
+    <section id="preview"></section>
     <header>
       <div class="left-side">
         <h2><span>dot</span>Store</h2>
@@ -42,26 +44,78 @@
         <h3 class="title-side">search filters :</h3>
         <div class="range-side">
           <label for="min-price">min :</label>
-          <input type="text" placeholder="minimum price" id="min-price" />
+          <input type="number" placeholder="minimum price" id="min-price" />
           <label for="max-price">max :</label>
-          <input type="text" placeholder="maximum price" id="max-price" />
+          <input type="number" placeholder="maximum price" id="max-price" />
         </div>
         <div class="btns-side" id="btns-side">
-          <ul>
-            <li data-filter="all">all</li>
+          <ul id="inputs">
+            <li>
+              <input type="checkbox" data-filter="all" id="all" checked /><label
+                for="all"
+                >all products</label
+              >
+            </li>
             <h4>electronics :</h4>
-            <li data-filter="smartphones">smartphones</li>
-            <li data-filter="laptops">laptops</li>
-            <li data-filter="electronics">Others</li>
+            <li>
+              <input
+                type="checkbox"
+                id="smartphones"
+                data-filter="smartphones"
+              /><label for="smartphones">smartphones</label>
+            </li>
+            <li>
+              <input type="checkbox" id="laptops" data-filter="laptops" /><label
+                for="laptops"
+                >laptops</label
+              >
+            </li>
+            <li>
+              <input
+                type="checkbox"
+                id="others"
+                data-filter="electronics"
+              /><label for="others">Others</label>
+            </li>
             <h4>life style :</h4>
-            <li data-filter="men's clothing">men's clothing</li>
-            <li data-filter="women's clothing">women's clothing</li>
-            <li data-filter="jewelery">jewelery</li>
-            <li data-filter="fragrances">fragrances</li>
-            <li data-filter="skincare">skincare</li>
+            <li>
+              <input
+                type="checkbox"
+                id="men's clothing"
+                data-filter="men's clothing"
+              /><label for="men's clothing">men's clothing</label>
+            </li>
+            <li>
+              <input
+                type="checkbox"
+                id="women's clothing"
+                data-filter="women's clothing"
+              /><label for="women's clothing">women's clothing</label>
+            </li>
+            <li>
+              <input type="checkbox" id="jewelery" data-filter="jewelery" />
+              <label for="jewelery">jewelery</label>
+            </li>
+            <li>
+              <input type="checkbox" id="fragrances" data-filter="fragrances" />
+              <label for="fragrances">fragrances</label>
+            </li>
+            <li>
+              <input type="checkbox" id="skincare" data-filter="skincare" />
+              <label for="skincare">skincare</label>
+            </li>
             <h4>home :</h4>
-            <li data-filter="groceries">groceries</li>
-            <li data-filter="home-decoration">home decoration</li>
+            <li>
+              <input type="checkbox" id="groceries" data-filter="groceries" />
+              <label for="groceries">groceries</label>
+            </li>
+            <li>
+              <input
+                type="checkbox"
+                id="home-decoration"
+                data-filter="home-decoration"
+              /><label for="home-decoration">home decoration</label>
+            </li>
           </ul>
         </div>
       </aside>
@@ -72,12 +126,16 @@
           </button>
           <div class="search-content">
             <input type="search" placeholder="Search Here" id="search-input" />
-            <label for="search-input">
-              <i class="fa-solid fa-magnifying-glass"></i
-            ></label>
+            <button id="btn-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+            <div class="search-values">
+              <ul id="search-result"></ul>
+            </div>
           </div>
         </div>
         <div class="product-container" id="products-container"></div>
+        <button class="top-btn" id="top-btn">go to top</button>
       </div>
     </main>
     <script src="javascript-file/header.js"></script>

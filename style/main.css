@@ -304,3 +304,17 @@ header .left-side h2 span {
     justify-content: space-between;
   }
 }
+.spam {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  padding: 10px;
+  font-size: 30px;
+  background-color: #ec0d0d;
+  border: 3px solid #f44336;
+  border-radius: 5px;
+  text-transform: capitalize;
+  color: white;
+  text-align: center;
+  position: relative;
+  animation: show-out 0.5s linear;
+}

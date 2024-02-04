@@ -1,5 +1,6 @@
 /* from here*/
 main {
+  position: relative;
   margin-top: 60px;
   width: 100%;
   min-height: 90vh;
@@ -272,11 +273,11 @@ p {
 }
 @keyframes showpru {
   0% {
-    transform: scale(0);
+    transform: translateX(-10%);
     opacity: 0;
   }
   100% {
-    transform: scale(1);
+    transform: translateX(0%);
     opacity: 1;
   }
 }
@@ -439,34 +440,5 @@ footer .end h5 {
   }
   footer .end h5 {
     font-size: 14px;
-  }
-}
-.spam {
-  grid-column-start: 1;
-  grid-column-end: 4;
-  padding: 30px 20px;
-  font-size: 30px;
-  background-color: red;
-  color: white;
-  text-align: center;
-  position: relative;
-}
-.spam::before {
-  content: "";
-  position: absolute;
-  right: 50%;
-  top: 10px;
-  width: 20px;
-  height: 20px;
-  border: 4px dotted white;
-  border-radius: 50%;
-  animation: rotete 7s linear infinite;
-}
-@keyframes rotete {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
   }
 }

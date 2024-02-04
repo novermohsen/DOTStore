@@ -1,7 +1,7 @@
 // product data fetching
 let productContainer = document.getElementById("product-container");
 let searchFild = document.getElementById("search-fild");
-
+let containerData = [];
 let app = fetch("javascript-file/fake-dataBase.json").then((res) => {
   return res.json();
 });
@@ -22,6 +22,7 @@ async function loopData(array) {
   // to get the categorys form json file auto
   await array.then((products) => {
     products.forEach((product) => {
+      containerData = products;
       if (categorysData.length == "0") {
         categorysData.push(product.category);
       } else {
@@ -61,6 +62,11 @@ async function loopData(array) {
 }
 
 function rendarElements(product) {
+  let source = product.thumbnail || product.image;
+  let title = product.title || product.name;
+  let brandName = product.brand || "Unknown";
+  let rateing = product.rating.rate || product.rating;
+  let price = product.price;
   let text = product.description;
   let finalText = "";
   if (text.split(" ").length >= 20) {
@@ -69,28 +75,22 @@ function rendarElements(product) {
     finalText = product.description;
   }
   return `
-    <div class="product-box">
-        <div class="image"><img src="${
-          product.thumbnail || product.image
-        }" alt="product-image" loading="lazy" /></div>
+    <div class="product-box" onclick="runData(${product.id})">
+        <div class="image"><img src="${source}" alt="product-image" loading="lazy" /></div>
             <div class="content">
                 <div class="text">
-                  <h4 class="product-title">${
-                    product.title || product.name
-                  }</h4>
-                   <p class="description" title="${
-                     product.description
-                   }">${finalText}</p>
+                  <h4 class="product-title">${title}</h4>
+                   <p class="description" title="${product.description}">${finalText}</p>
                 </div>
               <div class="data">
-                <span class="category">brand : ${
-                  product.brand || "Unknown"
-                }</span>
-                <span class="rating">rating : ${
-                  product.rating.rate || product.rating
-                }</span>
-                <p class="price">price is : ${product.price}$</p>
+                <span class="category">brand : ${brandName}</span>
+                <span class="rating">rating : ${rateing}</span>
+                <p class="price">price is : ${price}$</p>
               </div>
         </div>
      </div>`;
+}
+function runData(id) {
+  localStorage.setItem("productId", id);
+  window.location.pathname = "product.html";
 }

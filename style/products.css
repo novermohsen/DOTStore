@@ -23,7 +23,7 @@ header .btn:hover {
 main {
   margin-top: 60px;
   width: 100%;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 62px);
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -72,6 +72,7 @@ main .range-side input::placeholder {
   text-transform: capitalize;
 }
 main .container-side {
+  scroll-behavior: smooth;
   flex: 5;
 }
 main .btns-side {
@@ -82,8 +83,11 @@ main .btns-side h4 {
   text-transform: capitalize;
   color: var(--main-color-inverted);
 }
-
 main .btns-side ul li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
   color: var(--main-color-inverted);
   font-weight: bolder;
   font-size: 17px;
@@ -93,14 +97,21 @@ main .btns-side ul li {
   transition: var(--main-transition);
   cursor: pointer;
 }
-main .btns-side ul li.active {
-  text-decoration: underline;
+main .btns-side:has(input[data-filter="all"]:checked) li:not(:first-child) {
+  user-select: none;
+  opacity: 0.5;
+}
+main .btns-side ul li input {
+  accent-color: var(--main-color-blue);
+  width: 16px;
+  height: 16px;
+}
+main .btns-side ul li input:checked + label {
   color: var(--main-color-blue);
+  text-decoration: underline;
 }
 main .btns-side ul li:not(:first-child) {
-  margin-left: 10px;
-  list-style: disc;
-  list-style-position: inside;
+  margin-left: 15px;
 }
 main .btns-side ul li:hover {
   transform: scale(1.01);
@@ -108,10 +119,8 @@ main .btns-side ul li:hover {
 }
 main .btns-side ul li:first-child {
   width: 100%;
-  text-align: center;
-  background-color: var(--main-color-blue);
-  color: white;
   padding: 5px;
+  color: var(--main-color-inverted);
 }
 main .container-side {
   overflow-y: scroll;
@@ -144,7 +153,8 @@ main .seacrh-box .search-content {
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  overflow: hidden;
+
+  position: relative;
 }
 .seacrh-box .search-content input {
   all: unset;
@@ -155,10 +165,48 @@ main .seacrh-box .search-content {
 main .seacrh-box .search-content input {
   width: 100%;
 }
-.seacrh-box .search-content label {
+.seacrh-box .search-content button {
+  all: unset;
+  cursor: pointer;
   background-color: var(--main-color-blue);
   color: white;
   padding: 15px;
+}
+.search-values {
+  width: 100%;
+  padding: 10px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--color-white);
+  z-index: 9;
+  box-shadow: 0px 7px 5px 3px rgb(0 0 0 / 6%);
+  transition: var(--main-transition);
+  display: none;
+}
+.search-values:has(ul:empty) {
+  padding: 0;
+  box-shadow: none;
+}
+.search-values.active {
+  display: block;
+}
+.search-values ul li {
+  cursor: pointer;
+  padding: 10px;
+  border-bottom: 1px solid var(--color-overlay);
+  font-weight: bolder;
+  color: var(--main-color-inverted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search-values ul li img {
+  width: 60px;
+  height: 40px;
+}
+.search-values ul li:hover {
+  background-color: var(--color-overlay);
 }
 @media (max-width: 870px) {
   main .container-side {
@@ -181,6 +229,10 @@ main .seacrh-box .search-content input {
   .bar-btn {
     display: block;
   }
+  .search-values ul li img {
+    width: 40px;
+    height: 40px;
+  }
 }
 @keyframes move-out {
   0% {
@@ -202,6 +254,7 @@ main .seacrh-box .search-content input {
   gap: 20px;
 }
 .product-box {
+  cursor: pointer;
   background-color: var(--color-white);
   border-radius: 15px;
   overflow: hidden;
@@ -217,11 +270,11 @@ main .seacrh-box .search-content input {
 }
 @keyframes showpru {
   0% {
-    transform: scale(0);
+    transform: translateX(-10%);
     opacity: 0;
   }
   100% {
-    transform: scale(1);
+    transform: translateX(0%);
     opacity: 1;
   }
 }
@@ -265,4 +318,25 @@ main .seacrh-box .search-content input {
   color: white;
   padding: 10px;
   text-align: center;
+}
+.top-btn {
+  border: none;
+  background-color: var(--color-white);
+  color: var(--main-color-inverted);
+  text-transform: capitalize;
+  font-size: 20px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  transition: var(--main-transition);
+  border-radius: 2px;
+  display: none;
+}
+.top-btn.active {
+  animation: showpru 0.3s linear;
+  display: block;
+}
+.top-btn:hover {
+  font-size: 21px;
 }
