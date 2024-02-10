@@ -2,6 +2,7 @@
 let productContainer = document.getElementById("product-container");
 let searchFild = document.getElementById("search-fild");
 let containerData = [];
+
 let app = fetch("javascript-file/fake-dataBase.json").then((res) => {
   return res.json();
 });
@@ -13,7 +14,6 @@ loopData(data);
 
 // main data
 let categorysData = [];
-
 async function loopData(array) {
   await app.catch(() => {
     productContainer.innerHTML = `<div class="spam">check your network</div>`;
@@ -76,7 +76,7 @@ function rendarElements(product) {
   }
   return `
     <div class="product-box" onclick="runData(${product.id})">
-        <div class="image"><img src="${source}" alt="product-image" loading="lazy" /></div>
+        <div class="image"><img src="${source}" alt="product-image"/></div>
             <div class="content">
                 <div class="text">
                   <h4 class="product-title">${title}</h4>
@@ -92,5 +92,9 @@ function rendarElements(product) {
 }
 function runData(id) {
   localStorage.setItem("productId", id);
-  window.location.pathname = "product.html";
+  if (window.location.href == "https://novermohsen.github.io/DOTStore/") {
+    window.location.pathname = "DOTStore/product.html";
+  } else {
+    window.location.pathname = "/product.html";
+  }
 }

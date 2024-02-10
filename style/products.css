@@ -95,11 +95,14 @@ main .btns-side ul li {
   margin: 10px 0;
   text-transform: capitalize;
   transition: var(--main-transition);
+  user-select: none;
   cursor: pointer;
 }
-main .btns-side:has(input[data-filter="all"]:checked) li:not(:first-child) {
-  user-select: none;
-  opacity: 0.5;
+.minus {
+  color: var(--main-color-blue);
+  display: none;
+  width: 16px;
+  height: 16px;
 }
 main .btns-side ul li input {
   accent-color: var(--main-color-blue);
@@ -217,10 +220,11 @@ main .seacrh-box .search-content input {
   }
   main aside {
     width: 100%;
-    height: 50%;
     flex: none;
-    display: none;
     animation: move-out 0.3s linear;
+    height: 50%;
+    display: none;
+    margin: 10px;
   }
   main aside.active {
     display: block;
@@ -254,15 +258,15 @@ main .seacrh-box .search-content input {
   gap: 20px;
 }
 .product-box {
+  height: fit-content;
   cursor: pointer;
   background-color: var(--color-white);
-  border-radius: 15px;
+  border-radius: 5px;
   overflow: hidden;
   object-fit: contain;
   color: var(--main-color-inverted);
   transition: var(--main-transition);
   animation: showpru 0.3s linear;
-  height: fit-content;
   padding-bottom: 20px;
 }
 .product-box:hover {
@@ -280,11 +284,14 @@ main .seacrh-box .search-content input {
 }
 .product-box .image {
   width: 100%;
+  height: 220px;
   max-height: 230px;
   overflow: hidden;
 }
 .product-box img {
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   transition: var(--main-transition);
 }
 .product-box:hover img {

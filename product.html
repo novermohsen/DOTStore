@@ -29,6 +29,11 @@
             <a href="index.html"><i class="fa-solid fa-arrow-left"></i>home</a>
           </li>
           <li>
+            <button id="reoprt-btn" class="reoprt-btn" title="Report Page">
+              <i class="fa-solid fa-comment"></i>
+            </button>
+          </li>
+          <li>
             <button class="toggle-btn" id="toggle-btn">
               <div class="toggle-content">
                 <span class="light"><i class="fa-solid fa-sun"></i></span>
@@ -51,38 +56,59 @@
         <div class="btns-side" id="btns-side">
           <ul id="inputs">
             <li>
+              <i class="fa-solid fa-square-minus minus" id="minus"></i>
               <input type="checkbox" data-filter="all" id="all" checked /><label
                 for="all"
                 >all products</label
               >
             </li>
-            <h4>electronics :</h4>
+            <h4>
+              <li>
+                <input type="checkbox" id="elec" data-filter="elec" checked />
+                <label for="elec">electronics :</label>
+              </li>
+            </h4>
             <li>
               <input
                 type="checkbox"
                 id="smartphones"
                 data-filter="smartphones"
+                checked
               /><label for="smartphones">smartphones</label>
             </li>
             <li>
-              <input type="checkbox" id="laptops" data-filter="laptops" /><label
-                for="laptops"
-                >laptops</label
-              >
+              <input
+                type="checkbox"
+                id="laptops"
+                data-filter="laptops"
+                checked
+              /><label for="laptops">laptops</label>
             </li>
             <li>
               <input
                 type="checkbox"
                 id="others"
                 data-filter="electronics"
+                checked
               /><label for="others">Others</label>
             </li>
-            <h4>life style :</h4>
+            <h4>
+              <li>
+                <input
+                  type="checkbox"
+                  id="life-style"
+                  data-filter="life-style"
+                  checked
+                />
+                <label for="life-style">life style :</label>
+              </li>
+            </h4>
             <li>
               <input
                 type="checkbox"
                 id="men's clothing"
                 data-filter="men's clothing"
+                checked
               /><label for="men's clothing">men's clothing</label>
             </li>
             <li>
@@ -90,23 +116,49 @@
                 type="checkbox"
                 id="women's clothing"
                 data-filter="women's clothing"
+                checked
               /><label for="women's clothing">women's clothing</label>
             </li>
             <li>
-              <input type="checkbox" id="jewelery" data-filter="jewelery" />
+              <input
+                type="checkbox"
+                id="jewelery"
+                data-filter="jewelery"
+                checked
+              />
               <label for="jewelery">jewelery</label>
             </li>
             <li>
-              <input type="checkbox" id="fragrances" data-filter="fragrances" />
+              <input
+                type="checkbox"
+                id="fragrances"
+                data-filter="fragrances"
+                checked
+              />
               <label for="fragrances">fragrances</label>
             </li>
             <li>
-              <input type="checkbox" id="skincare" data-filter="skincare" />
+              <input
+                type="checkbox"
+                id="skincare"
+                data-filter="skincare"
+                checked
+              />
               <label for="skincare">skincare</label>
             </li>
-            <h4>home :</h4>
+            <h4>
+              <li>
+                <input type="checkbox" id="home" data-filter="home" checked />
+                <label for="home">home :</label>
+              </li>
+            </h4>
             <li>
-              <input type="checkbox" id="groceries" data-filter="groceries" />
+              <input
+                type="checkbox"
+                id="groceries"
+                data-filter="groceries"
+                checked
+              />
               <label for="groceries">groceries</label>
             </li>
             <li>
@@ -114,6 +166,7 @@
                 type="checkbox"
                 id="home-decoration"
                 data-filter="home-decoration"
+                checked
               /><label for="home-decoration">home decoration</label>
             </li>
           </ul>
@@ -138,6 +191,14 @@
         <button class="top-btn" id="top-btn">go to top</button>
       </div>
     </main>
+    <div class="container-lang" id="container-lang">
+      choose your language :
+      <button data-lang="english">english</button>
+      <button data-lang="arabic">arabic</button>
+    </div>
+  </div>
+  <div class="report-overlay" id="report-overlay"></div>
+  <div class="report-div" id="report-div-content"></div>
     <script src="javascript-file/header.js"></script>
     <script src="javascript-file/products.js"></script>
   </body>

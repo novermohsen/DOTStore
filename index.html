@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="style/all.min.css" />
     <link rel="stylesheet" href="style/main.css" />
     <link rel="stylesheet" href="style/index.css" />
-    <link rel="stylesheet" href="style/preview.css" />
   </head>
   <body>
     <div class="app">
@@ -29,6 +28,11 @@
             <li><a href="#testemon">about us</a></li>
             <li><a href="#products">products</a></li>
             <li><a href="#explore">explore</a></li>
+            <li>
+              <button id="reoprt-btn" class="reoprt-btn" title="Report Page">
+                <i class="fa-solid fa-comment"></i>
+              </button>
+            </li>
             <li>
               <button class="toggle-btn" id="toggle-btn">
                 <div class="toggle-content">
@@ -54,14 +58,18 @@
             </div>
           </div>
           <div class="right-land">
-            <img
-              src="assets/amin-image.png"
-              alt="image-landing"
-              loading="lazy"
-            />
+            <img src="assets/amin-image.png" alt="image-landing" />
           </div>
         </div>
       </main>
+      <div class="div-svg">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path
+            fill-opacity="1"
+            d="M0,160L80,138.7C160,117,320,75,480,74.7C640,75,800,117,960,117.3C1120,117,1280,75,1360,53.3L1440,32L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"
+          ></path>
+        </svg>
+      </div>
       <section class="testemon" id="testemon">
         <div class="container">
           <div class="title">
@@ -103,7 +111,7 @@
           </div>
         </div>
       </section>
-      <section class="product container" id="products">
+      <section class="product" id="products">
         <div class="title">
           <h3>our top rating products</h3>
         </div>
@@ -170,7 +178,14 @@
           <h5>made by : nover mohsen</h5>
         </div>
       </footer>
+      <div class="container-lang" id="container-lang">
+        choose your language :
+        <button data-lang="english">english</button>
+        <button data-lang="arabic">arabic</button>
+      </div>
     </div>
+    <div class="report-overlay" id="report-overlay"></div>
+    <div class="report-div" id="report-div-content"></div>
     <script src="javascript-file/header.js"></script>
     <script src="javascript-file/index.js"></script>
   </body>

@@ -786,5 +786,83 @@
       "rate": 3.6,
       "count": 145
     }
+  },
+  {
+    "id": 51,
+    "title": "Kindle (2022 release) – The lightest and most compact Kindle.",
+    "price": 3000,
+    "description": "The lightest and most compact Kindle, with a 300 ppi high-resolution display for sharp text and images.",
+    "category": "electronics",
+    "image": "https://m.media-amazon.com/images/I/616oS75gbML._AC_SY450_.jpg",
+    "rating": {
+      "rate": 4.6,
+      "count": 145
+    }
+  },
+  {
+    "id": 52,
+    "title": "Vivo Y02s Dual SIM, 3GB RAM, 32GB ROM, 4G LTE - Fluorite Black",
+    "price": 500,
+    "description": "Y02s has the trendiest design and texture among the products in same price segment.",
+    "category": "smartphones",
+    "image": "https://m.media-amazon.com/images/I/51vo-oGHv4L._AC_SX425_.jpg",
+    "rating": {
+      "rate": 3.6,
+      "count": 145
+    },
+    "images": [
+      "https://m.media-amazon.com/images/I/51vo-oGHv4L._AC_SX679_.jpg",
+      "https://m.media-amazon.com/images/I/51USF-7Z-xL._AC_SX425_.jpg"
+    ]
+  },
+  {
+    "id": 53,
+    "title": "PULOKA for iPhone 13 Promax Leather Flip Cover Detachable Leather Wallet Case Compatiable for Apple iPhone 13 Promax",
+    "price": 40,
+    "description": "Perfectly designed for iPhone 13 Promax NOT fit other phones. (Please check your phone model before place an order)",
+    "category": "smartphones",
+    "image": "https://m.media-amazon.com/images/I/61KFX8BmaWL._AC_SX466_.jpg",
+    "rating": {
+      "rate": 3.6,
+      "count": 145
+    },
+    "images": [
+      "https://m.media-amazon.com/images/I/61Rz-7jim1L._AC_SX355_.jpg",
+      "https://m.media-amazon.com/images/I/71-PXXPiu9L._AC_SY450_.jpg"
+    ]
+  },
+  {
+    "id": 54,
+    "title": "Ceramic Vases for Home Decor Set of 3 - White Modern Donut Vase",
+    "price": 35,
+    "description": "Circle Round for Pampas Grass Artificial Flowers, Boho Decor Living Room Table Centerpieces Dining Bedroom Shelf Farmhouse Decorations",
+    "category": "home-decoration",
+    "image": "https://m.media-amazon.com/images/I/81g90xSiirL._AC_SL1500_.jpg",
+    "rating": {
+      "rate": 3.6,
+      "count": 145
+    },
+    "images": [
+      "https://m.media-amazon.com/images/I/71Tr-iAXgIL._AC_SL1500_.jpg",
+      "https://m.media-amazon.com/images/I/614HKnJatUL._AC_SL1500_.jpg",
+      "https://m.media-amazon.com/images/I/81g90xSiirL._AC_SL1500_.jpg"
+    ]
+  },
+  {
+    "id": 55,
+    "title": "Helicopter Aromatherapy Solar Rotating Air Freshener,",
+    "price": 10.99,
+    "description": "Nicer Car Diffuser: 10.5 x 7.5 x 5.3 cm /4.13 x 2.95 x 2.08 inches, 0.1kg",
+    "category": "home-decoration",
+    "image": "https://m.media-amazon.com/images/I/51Cx4dgzQEL._AC_SX522_.jpg",
+    "rating": {
+      "rate": 3.6,
+      "count": 145
+    },
+    "images": [
+      "https://m.media-amazon.com/images/I/71dRlPMak8L._AC_SY355_.jpg",
+      "https://m.media-amazon.com/images/I/71rctwQU5CL._AC_SY355_.jpg",
+      "https://m.media-amazon.com/images/I/81IneyY2JwL._AC_SY355_.jpg"
+    ]
   }
 ]

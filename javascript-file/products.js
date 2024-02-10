@@ -36,8 +36,18 @@ let searchValue = "";
 let containerData = [];
 let minPrice = 0;
 let maxPrice = 10000;
-let sectionValue = ["all"];
-
+let sectionValue = [
+  "smartphones",
+  "laptops",
+  "electronics",
+  "men's clothing",
+  "women's clothing",
+  "jewelery",
+  "fragrances",
+  "skincare",
+  "groceries",
+  "home-decoration",
+];
 // to fetch data from json file
 async function getData() {
   await fetch("javascript-file/fake-dataBase.json")
@@ -53,95 +63,152 @@ async function getData() {
     window.localStorage.removeItem("productId");
   }
 }
-
 // fetch data start
 getData();
 
 // main function of filtering
 function filterData(valueSections, minPrice, maxPrice, searchVal = "") {
-  // to forbid the checkboxes to run when all checkbox is checked
-  if (valueSections.length != 0) {
-    valueSections.forEach((value) => {
-      if (value == "all") {
-        inputsCheckBoxs.forEach((input, index) => {
-          if (index != 0) {
-            input.disabled = true;
-            input.checked = false;
-          }
+  if (valueSections.length == 0) {
+    inputsCheckBoxs.forEach((e) => {
+      e.checked = false;
+    });
+  } else if (valueSections.length == 10) {
+    inputsCheckBoxs.forEach((e) => {
+      e.checked = true;
+    });
+  }
+  let productFilter = [];
+  if (searchVal == "") {
+    containerData.forEach((product) => {
+      valueSections.forEach((section) => {
+        if (
+          product.category == section &&
+          product.price >= minPrice &&
+          product.price <= maxPrice
+        ) {
+          productFilter.push(product);
+        }
+      });
+    });
+  } else if (searchVal != "") {
+    containerData.forEach((product) => {
+      valueSections.forEach((section) => {
+        if (
+          product.category == section &&
+          product.price >= minPrice &&
+          product.price <= maxPrice &&
+          product.title.toLowerCase().includes(searchVal.toLowerCase())
+        ) {
+          productFilter.push(product);
+        }
+      });
+    });
+  }
+  rendarElements(productFilter);
+}
+
+let smartphones = document.getElementById("smartphones");
+let laptops = document.getElementById("laptops");
+let others = document.getElementById("others");
+let men = document.getElementById("men's clothing");
+let women = document.getElementById("women's clothing");
+let jewelery = document.getElementById("jewelery");
+let fragrances = document.getElementById("fragrances");
+let skincare = document.getElementById("skincare");
+let groceries = document.getElementById("groceries");
+let home = document.getElementById("home-decoration");
+
+// to add check box on the (sectionValue)
+inputsCheckBoxs.forEach((input) => {
+  input.addEventListener("click", () => {
+    if (input.checked) {
+      ["groceries", "home-decoration"];
+      if (input.dataset.filter == "all") {
+        sectionValue = [
+          "smartphones",
+          "laptops",
+          "electronics",
+          "men's clothing",
+          "women's clothing",
+          "jewelery",
+          "fragrances",
+          "skincare",
+          "groceries",
+          "home-decoration",
+        ];
+        inputsCheckBoxs.forEach((e) => {
+          e.checked = true;
         });
-      } else if (value != "all") {
-        inputsCheckBoxs.forEach((input) => {
-          input.disabled = false;
+      } else if (input.dataset.filter == "elec") {
+        smartphones.checked = true;
+        laptops.checked = true;
+        others.checked = true;
+        sectionValue.push(...["smartphones", "laptops", "electronics"]);
+      } else if (input.dataset.filter == "life-style") {
+        men.checked = true;
+        women.checked = true;
+        jewelery.checked = true;
+        fragrances.checked = true;
+        skincare.checked = true;
+        sectionValue.push(
+          ...[
+            "men's clothing",
+            "women's clothing",
+            "jewelery",
+            "fragrances",
+            "skincare",
+          ]
+        );
+      } else if (input.dataset.filter == "home") {
+        groceries.checked = true;
+        home.checked = true;
+        sectionValue.push(...["groceries", "home-decoration"]);
+      }
+    } else if (!input.checked) {
+      if (input.dataset.filter == "all") {
+        sectionValue = [];
+        inputsCheckBoxs.forEach((e) => {
+          e.checked = false;
+        });
+      } else if (input.dataset.filter == "elec") {
+        smartphones.checked = false;
+        laptops.checked = false;
+        others.checked = false;
+        sectionValue = sectionValue.filter((e) => {
+          return e != "smartphones" && e != "laptops" && e != "electronics";
+        });
+      } else if (input.dataset.filter == "life-style") {
+        men.checked = false;
+        women.checked = false;
+        jewelery.checked = false;
+        fragrances.checked = false;
+        skincare.checked = false;
+        sectionValue = sectionValue.filter((e) => {
+          return (
+            e != "men's clothing" &&
+            e != "women's clothing" &&
+            e != "jewelery" &&
+            e != "fragrances" &&
+            e != "skincare"
+          );
+        });
+      } else if (input.dataset.filter == "home") {
+        groceries.checked = false;
+        home.checked = false;
+        sectionValue = sectionValue.filter((e) => {
+          return e != "groceries" && e != "home-decoration";
         });
       }
-    });
-  } else {
-    inputsCheckBoxs.forEach((input) => {
-      input.disabled = false;
-    });
-  }
-  // filtered array
-  let productsFilterd = [];
+      sectionValue = sectionValue.filter((section) => {
+        return section != input.dataset.filter;
+      });
+    }
+    filterData(sectionValue, minPrice, maxPrice, searchValue);
+  });
+});
 
-  // if user not use search field
-  if (searchVal == "") {
-    // loop on sections are checked
-    valueSections.forEach((section) => {
-      // loop on products one by one to check category
-      containerData.forEach((product) => {
-        if (section == "all") {
-          // to check price
-          if (minPrice <= product.price && product.price <= maxPrice) {
-            productsFilterd.push(product);
-          }
-        } else {
-          if (
-            minPrice <= product.price &&
-            product.price <= maxPrice &&
-            section == product.category
-          ) {
-            productsFilterd.push(product);
-          }
-        }
-      });
-    });
-    // to add products on document
-    rendarElements(productsFilterd);
-    // if user use search field
-  } else if (searchVal != "") {
-    // loop on sections are checked
-    valueSections.forEach((section) => {
-      searchVal = searchVal.toLowerCase();
-      // loop on products one by one to check category
-      containerData.forEach((product) => {
-        product.title = product.title.toLowerCase();
-        if (section == "all") {
-          // to check price
-          if (
-            (minPrice <= product.price &&
-              product.price <= maxPrice &&
-              product.title.includes(searchVal)) ||
-            product.title == searchVal
-          ) {
-            productsFilterd.push(product);
-          }
-        } else {
-          if (
-            (minPrice <= product.price &&
-              product.price <= maxPrice &&
-              section == product.category &&
-              product.title.includes(searchVal)) ||
-            product.title == searchVal
-          ) {
-            productsFilterd.push(product);
-          }
-        }
-      });
-    });
-    // to add products on document
-    rendarElements(productsFilterd);
-  }
-}
+filterData(sectionValue, minPrice, maxPrice, searchValue);
+
 // to show (search-values)
 searchInput.addEventListener("focus", () => {
   document.querySelector(".search-values").classList.add("active");
@@ -163,7 +230,7 @@ searchInput.addEventListener("input", (e) => {
       let source = product.thumbnail || product.image;
       let text = containerData[index].title;
       if (product.title.toLowerCase().includes(searchValue.toLowerCase())) {
-        resultSearch.innerHTML += `<li class="data-search" data-text="${text}">${text} <img src="${source}" alt="image" loading="lazy"/></li>`;
+        resultSearch.innerHTML += `<li class="data-search" data-text="${text}">${text} <img src="${source}" alt="image"/></li>`;
       } else {
         let title = product.title.toLowerCase().split(" ");
         title = title
@@ -173,7 +240,7 @@ searchInput.addEventListener("input", (e) => {
           })
           .join("");
         if (title.includes(letters)) {
-          resultSearch.innerHTML += `<li class="data-search" data-text="${text}">${text} <img src="${source}" alt="image" loading="lazy"/></li>`;
+          resultSearch.innerHTML += `<li class="data-search" data-text="${text}">${text} <img src="${source}" alt="image"/></li>`;
         }
       }
     });
@@ -198,7 +265,11 @@ function lisClick() {
 searchBtn.addEventListener("click", () => {
   filterData(sectionValue, minPrice, maxPrice, searchValue);
 });
-
+document.body.addEventListener("keydown", (e) => {
+  if (e.key == "Enter") {
+    filterData(sectionValue, minPrice, maxPrice, searchValue);
+  }
+});
 // max value input
 maxInput.addEventListener("input", (e) => {
   if (e.target.value != "") {
@@ -214,20 +285,6 @@ maxInput.addEventListener("input", (e) => {
 minInput.addEventListener("input", (e) => {
   minPrice = +e.target.value;
   filterData(sectionValue, minPrice, maxPrice, searchValue);
-});
-
-// to add check box on the (sectionValue)
-inputsCheckBoxs.forEach((input) => {
-  input.addEventListener("click", () => {
-    if (input.checked) {
-      sectionValue.push(input.dataset.filter);
-    } else if (!input.checked) {
-      sectionValue = sectionValue.filter((e) => {
-        return e != input.dataset.filter;
-      });
-    }
-    filterData(sectionValue, minPrice, maxPrice, searchValue);
-  });
 });
 
 // to render elements in #products-container
@@ -270,7 +327,10 @@ function rendarElements(products) {
       </div>`;
   });
 }
+
 function previewRender(index) {
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
   let containerDiv = document.getElementById("preview");
   containerDiv.innerHTML = "";
   let product = containerData[index - 1];
@@ -297,7 +357,11 @@ function previewRender(index) {
   var miniProduct = "";
   let i = 0;
   containerData.forEach((productEle) => {
-    if (category == productEle.category && title != productEle.title) {
+    if (
+      category == productEle.category &&
+      title != productEle.title &&
+      productEle.price <= price + 0.5 * price
+    ) {
       i++;
       if (i <= 4) {
         miniProduct += `
@@ -356,6 +420,11 @@ function previewRender(index) {
   btnDelet.onclick = () => {
     btnDelet.parentElement.parentElement.remove();
   };
+  document.body.addEventListener("keydown", (e) => {
+    if (e.key == "Escape" || e.key == "x") {
+      btnDelet.parentElement.parentElement.remove();
+    }
+  });
   let imagesDiv = document.querySelectorAll("#contaoner-images img");
   imagesDiv.forEach((img) => {
     img.addEventListener("click", () => {

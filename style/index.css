@@ -1,15 +1,13 @@
-/* from here*/
 main {
+  margin-top: 55px;
   position: relative;
-  margin-top: 60px;
   width: 100%;
-  min-height: 90vh;
+  min-height: 100vh;
   background-color: var(--color-white);
   display: flex;
   justify-content: center;
   align-items: center;
-
-  padding: 50px;
+  padding: 50px 20px;
   user-select: none;
   background-image: linear-gradient(
     to bottom,
@@ -22,7 +20,6 @@ main .content-box {
   justify-content: space-between;
   align-items: center;
   gap: 30px;
-  flex-direction: row;
   color: var(--main-color-inverted);
 }
 main .content-box .text h3 {
@@ -77,10 +74,14 @@ main .content-box .left-side {
 }
 main .content-box .right-land {
   flex: 1;
+  max-width: 700px;
+  max-height: 525px;
+  min-width: 300px;
+  min-height: 225px;
 }
 main .content-box .right-land img {
-  max-width: 700px;
   width: 100%;
+  height: 100%;
   animation: move 6s linear infinite;
 }
 
@@ -208,7 +209,7 @@ p {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin: 0;
+  margin: 20px;
 }
 .btn-second .second-page {
   background-color: var(--main-color-blue);
@@ -227,6 +228,7 @@ p {
   margin-left: 4px;
 }
 .product {
+  padding: 20px 0;
   background-color: var(--color-overlay);
 }
 .product-container {
@@ -236,18 +238,16 @@ p {
   margin: 20px 0;
   padding: 20px;
   padding-bottom: 10px;
-
   overflow-x: auto;
   overflow-y: hidden;
   display: grid;
   gap: 20px;
 }
-
 .category-content::-webkit-scrollbar {
   height: 10px;
 }
 .category-content::-webkit-scrollbar-thumb {
-  background-color: var(--color-white);
+  background-color: var(--main-color-blue);
   border-radius: 20px;
 }
 .category-title {
@@ -258,37 +258,28 @@ p {
   margin: 0 20px;
 }
 .product-box {
+  cursor: pointer;
   background-color: var(--color-white);
-  border-radius: 15px;
+  border-radius: 5px;
   overflow: hidden;
-  object-fit: contain;
   color: var(--main-color-inverted);
   transition: var(--main-transition);
-  animation: showpru 0.3s linear;
-  height: fit-content;
   padding-bottom: 20px;
+  height: fit-content;
 }
 .product-box:hover {
   transform: scale(1.04);
 }
-@keyframes showpru {
-  0% {
-    transform: translateX(-10%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0%);
-    opacity: 1;
-  }
-}
 .product-box .image {
   width: 100%;
-  max-height: 230px;
+  height: 200px;
+  max-height: 220px;
   overflow: hidden;
 }
 .product-box img {
-  max-width: 100%;
   width: 100%;
+  height: 100%;
+  object-fit: contain;
   transition: var(--main-transition);
 }
 .product-box:hover img {
@@ -303,7 +294,6 @@ p {
   text-transform: capitalize;
 }
 .product-box .description {
-  max-width: 400px;
   overflow: hidden;
 }
 .product-box .data {
@@ -353,29 +343,12 @@ p {
 .explore-content {
   position: relative;
   z-index: 5;
-  width: 90%;
-  height: 100%;
   padding: 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 40px;
 }
 .exolper-seva {
   display: grid;
-  grid-template-columns: repeat(4, 400px);
-  gap: 10px;
-  overflow-x: auto;
-  user-select: none;
-  cursor: grabbing;
-}
-.exolper-seva::-webkit-scrollbar {
-  height: 12px;
-}
-.exolper-seva::-webkit-scrollbar-thumb {
-  height: 12px;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
 }
 .explore-content .explore-text {
   width: 100%;
@@ -419,7 +392,6 @@ footer .end h5 {
   font-size: 20px;
   text-wrap: wrap;
 }
-
 @media (max-width: 750px) {
   .explore-content {
     padding: 20px;
