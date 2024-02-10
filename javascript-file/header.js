@@ -365,11 +365,11 @@ function messageComponent(firstName, selectElement, rangeRating, email) {
   }
   let source = "";
   if (rangeRating.value <= 2) {
-    source = "../assets/sad-face.png";
+    source = "assets/sad-face.png";
   } else if (rangeRating.value <= 3) {
-    source = "../assets/bored-face.png";
+    source = "assets/bored-face.png";
   } else {
-    source = "../assets/happy-face.png";
+    source = "assets/happy-face.png";
   }
   return ` <div class="detils">
   <div class="cont">
