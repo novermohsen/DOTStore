@@ -381,7 +381,7 @@ function messageComponent(firstName, selectElement, rangeRating, email) {
     rangeRating.value
   )}</span> ${stars}</h2>
       <h2>${messageEnd} : <span>${email.value}</span></h2>
-      <div class="bottom" ><img src="../assets/checked.png" alt="true" /></div>
+      <div class="bottom" ><img src="assets/checked.png" alt="true" /></div>
     </div>
   </div>
 </div>`;
